@@ -28,30 +28,32 @@
                                     <constraint firstAttribute="width" secondItem="ozk-JA-KUQ" secondAttribute="height" multiplier="1:1" id="bAO-74-tQd"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-bS-DWf">
-                                <rect key="frame" x="172.5" y="628" width="69" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M70-yB-kdT">
+                                <rect key="frame" x="100" y="628" width="214" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="De0-wP-1vP"/>
-                                    <constraint firstAttribute="height" constant="36" id="Z38-sB-Lob"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Ask">
+                                    <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ozk-JA-KUQ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1:1" id="3TV-nV-OG7"/>
-                            <constraint firstItem="OEf-bS-DWf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HE4-nf-dIj"/>
                             <constraint firstItem="B0t-8s-PHF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="L54-vr-XDg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B0t-8s-PHF" secondAttribute="trailing" constant="20" id="cKz-hL-Cn2"/>
+                            <constraint firstItem="M70-yB-kdT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="h7s-BP-SxU"/>
+                            <constraint firstItem="M70-yB-kdT" firstAttribute="top" secondItem="ozk-JA-KUQ" secondAttribute="bottom" constant="50" id="jC4-1X-b3B"/>
                             <constraint firstItem="B0t-8s-PHF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qHb-DX-8Ov"/>
                             <constraint firstItem="ozk-JA-KUQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tak-hS-4BC"/>
-                            <constraint firstItem="OEf-bS-DWf" firstAttribute="top" secondItem="ozk-JA-KUQ" secondAttribute="bottom" constant="50" id="uqB-IM-c3j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M70-yB-kdT" secondAttribute="trailing" constant="100" id="w38-fL-HQe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="askBtnPressed" destination="M70-yB-kdT" id="UXh-Ju-DFO"/>
+                        <outlet property="imgView" destination="ozk-JA-KUQ" id="sjb-Cy-2TN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
