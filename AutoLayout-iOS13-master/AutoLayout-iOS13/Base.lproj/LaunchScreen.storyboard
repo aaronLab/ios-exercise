@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,19 +12,25 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppBreweryBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fEb-pf-Q9X">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppBreweryBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fEb-pf-Q9X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppBreweryLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Iff-9M-PPJ">
-                                <rect key="frame" x="112" y="418.5" width="190" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppBreweryLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Iff-9M-PPJ">
+                                <rect key="frame" x="92.666666666666686" y="376.66666666666669" width="190" height="59"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fEb-pf-Q9X" secondAttribute="bottom" id="9K3-Ya-jK1"/>
+                            <constraint firstItem="fEb-pf-Q9X" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ie1-Od-IOK"/>
+                            <constraint firstItem="fEb-pf-Q9X" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ao4-IN-SRo"/>
+                            <constraint firstItem="Iff-9M-PPJ" firstAttribute="centerX" secondItem="fEb-pf-Q9X" secondAttribute="centerX" id="dSB-rJ-gRU"/>
+                            <constraint firstItem="fEb-pf-Q9X" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="jPL-nh-UT1"/>
+                            <constraint firstItem="Iff-9M-PPJ" firstAttribute="centerY" secondItem="fEb-pf-Q9X" secondAttribute="centerY" id="slp-rX-9Rs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -34,7 +40,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppBreweryBackground" width="577" height="873"/>
+        <image name="AppBreweryBackground" width="384.66665649414062" height="582"/>
         <image name="AppBreweryLogo" width="190" height="59"/>
     </resources>
 </document>
