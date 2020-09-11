@@ -207,6 +207,7 @@
                         <viewLayoutGuide key="safeArea" id="wMZ-LG-Y4P"/>
                     </view>
                     <connections>
+                        <outlet property="resultAdviceLabel" destination="9IV-CT-mxw" id="rjg-vF-f1c"/>
                         <outlet property="resultLabel" destination="VU9-2W-Sd5" id="4rw-hX-XP2"/>
                     </connections>
                 </viewController>
