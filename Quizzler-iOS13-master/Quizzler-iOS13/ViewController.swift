@@ -28,41 +28,53 @@ class ViewController: UIViewController {
         Question(q: "The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", a: "False"),
         Question(q: "No piece of square dry paper can be folded in half more than 7 times.", a: "False"),
         Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
-
     ]
-    
     var questionNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Update UI
         self.updateUI()
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         let userAnswer = sender.currentTitle
         let actualAnswer = self.quiz[self.questionNumber].answer
-        
+        let resultMessage: String
         // Check Answer
         if (userAnswer == actualAnswer) {
-            print("Right!")
+            sender.backgroundColor = .green
+            resultMessage = "Correct!"
         } else {
-            print("Wrong!")
+            sender.backgroundColor = .red
+            resultMessage = "Wrong!"
         }
-        
-        self.updateUI()
+        // Result Alert
+        let alert = UIAlertController(title: nil, message: resultMessage, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            alert.dismiss(animated: true) {
+                // Update UI
+                self.updateUI()
+            }
+        }
     }
     
     func updateUI() {
-        let progress = Float(self.questionNumber) / Float(self.quiz.count)
-        self.progressBar.progress = progress
-        
+        // Button Background Color
+        self.trueButton.backgroundColor = .clear
+        self.falseButton.backgroundColor = .clear
+        // Question Number
         if (self.questionNumber + 1 >= self.quiz.count) {
             self.questionNumber = 0
         } else {
             self.questionNumber += 1
         }
+        // Question Label
         self.questionLabel.text = self.quiz[self.questionNumber].question
+        // Progress Bar
+        let progress = Float(self.questionNumber + 1) / Float(self.quiz.count)
+        self.progressBar.progress = progress
     }
     
 }
