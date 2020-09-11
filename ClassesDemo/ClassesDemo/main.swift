@@ -1,19 +1,10 @@
 
-let skeleton = Enemy()
-print(skeleton.health)
-skeleton.move()
-skeleton.attack()
+var skeleton1 = Enemy(health: 100, attackStrength: 10)
+var skeleton2 = skeleton1
 
-print()
+skeleton1.takeDamage(amount: 10)
+skeleton2.takeDamage(amount: 10)
+skeleton1.takeDamage(amount: 10)
 
-let dragon = Dragon()
-
-dragon.attackStrength = 15
-dragon.wingSpan = 5
-
-print(dragon.health)
-print(dragon.wingSpan)
-
-dragon.talk(speech: "My teeth are swords! My claws are spears! My wings are a hurricane.")
-dragon.move()
-dragon.attack()
+print(skeleton1.health)
+print(skeleton2.health)
