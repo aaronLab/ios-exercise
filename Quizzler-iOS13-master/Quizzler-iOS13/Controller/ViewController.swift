@@ -11,9 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
     
     var quizBrain = QuizBrain()
     
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: resultMessage, preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             alert.dismiss(animated: true) {
                 self.updateUI()
             }
@@ -50,9 +52,16 @@ class ViewController: UIViewController {
     
     func updateUI() {
         self.questionLabel.text = self.quizBrain.getQuizText()
+        self.scoreLabel.text = ("Score: \(self.quizBrain.getScore())")
         
-        self.trueButton.backgroundColor = .clear
-        self.falseButton.backgroundColor = .clear
+        let answers = self.quizBrain.getAnswerSheet()
+        self.firstButton.setTitle(answers[0], for: .normal)
+        self.secondButton.setTitle(answers[1], for: .normal)
+        self.thirdButton.setTitle(answers[2], for: .normal)
+        
+        self.firstButton.backgroundColor = .clear
+        self.secondButton.backgroundColor = .clear
+        self.thirdButton.backgroundColor = .clear
         
         self.progressBar.progress = self.quizBrain.getProgress()
     }
