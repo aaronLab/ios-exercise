@@ -20,17 +20,20 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        weatherManager.delegate = self
         self.searchTextField.delegate = self
     }
+    
+}
 
+//MARK: - UITextFieldDelegate
+
+extension WeatherViewController: UITextFieldDelegate {
     @IBAction func searchPressed(_ sender: UIButton) {
         self.searchTextField.endEditing(true)
         print(self.searchTextField.text!)
     }
     
-}
-
-extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.searchTextField.endEditing(true)
         print(self.searchTextField.text!)
@@ -52,5 +55,32 @@ extension WeatherViewController: UITextFieldDelegate {
         }
         
         self.searchTextField.text = ""
+    }
+    
+}
+
+//MARK: - WeatherManagerDelegate
+
+extension WeatherViewController: WeatherManagerDelegate {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = weather.cityName
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: "Error!",
+                message: "Please Check Your Network Status\nor the City Name",
+                preferredStyle: .alert)
+            self.present(alert, animated: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 }
