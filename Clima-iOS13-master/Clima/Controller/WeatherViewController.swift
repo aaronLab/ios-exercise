@@ -31,7 +31,6 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func currentLocationPressed(_ sender: UIButton) {
-        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestLocation()
     }
     
@@ -100,6 +99,7 @@ extension WeatherViewController: WeatherManagerDelegate {
 
 extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
         guard let localValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat = localValue.latitude
         let lon = localValue.longitude
