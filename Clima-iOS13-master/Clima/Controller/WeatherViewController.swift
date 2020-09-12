@@ -7,21 +7,32 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherViewController: UIViewController {
-
+    
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
     var weatherManager = WeatherManager()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherManager.delegate = self
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestLocation()
+        
+        self.weatherManager.delegate = self
         self.searchTextField.delegate = self
+    }
+    
+    @IBAction func currentLocationPressed(_ sender: UIButton) {
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestLocation()
     }
     
 }
@@ -83,4 +94,28 @@ extension WeatherViewController: WeatherManagerDelegate {
             }
         }
     }
+}
+
+//MARK: - CLLocationManagerDelegate
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let localValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        let lat = localValue.latitude
+        let lon = localValue.longitude
+        self.weatherManager.fetchWeather(lat: lat, lon: lon)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let alert = UIAlertController(
+            title: "Error!",
+            message: "Please Check Your Location Setting!",
+            preferredStyle: .alert)
+        self.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
 }
