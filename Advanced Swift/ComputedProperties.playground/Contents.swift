@@ -1,13 +1,25 @@
 import Foundation
 
-let pizzaInInches: Int = 12
+let pizzaInInches: Int = 16
+var numberOfPeople: Int = 6
+let slicesPerPerson: Int = 4
 
 var numberOfSlices: Int {
     get {  // get: read-only, cannot write
         return pizzaInInches - 4
-    } set {  // set: can write
-        print("numberOfSlices now has a new value which is \(newValue)")
     }
 }
 
-numberOfSlices = 12
+var numberOfPizza: Int {
+    get {
+        let neededSlices = numberOfPeople * slicesPerPerson
+        return neededSlices / numberOfSlices
+    }
+    set {
+        let totalSlices = numberOfSlices * newValue
+        numberOfPeople = totalSlices / slicesPerPerson
+    }
+}
+
+numberOfPizza = 6
+print(numberOfPeople)
