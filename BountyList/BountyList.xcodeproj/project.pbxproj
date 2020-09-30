@@ -14,6 +14,10 @@
 		94AA6E61240FB60300BE0151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AA6E5F240FB60300BE0151 /* LaunchScreen.storyboard */; };
 		94AA6E69240FB69400BE0151 /* BountyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA6E68240FB69400BE0151 /* BountyViewController.swift */; };
 		94AA6E6B240FD04700BE0151 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA6E6A240FD04700BE0151 /* DetailViewController.swift */; };
+		A4A67C492524227000910179 /* ListCll.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A67C482524227000910179 /* ListCll.swift */; };
+		A4A67C4D252422AC00910179 /* BountyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A67C4C252422AC00910179 /* BountyInfo.swift */; };
+		A4A67C52252422E600910179 /* BountyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A67C51252422E600910179 /* BountyViewModel.swift */; };
+		A4A67C572524232300910179 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A67C562524232300910179 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		94AA6E62240FB60300BE0151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AA6E68240FB69400BE0151 /* BountyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyViewController.swift; sourceTree = "<group>"; };
 		94AA6E6A240FD04700BE0151 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A4A67C482524227000910179 /* ListCll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCll.swift; sourceTree = "<group>"; };
+		A4A67C4C252422AC00910179 /* BountyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyInfo.swift; sourceTree = "<group>"; };
+		A4A67C51252422E600910179 /* BountyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyViewModel.swift; sourceTree = "<group>"; };
+		A4A67C562524232300910179 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,44 @@
 		94AA6E53240FB60200BE0151 /* BountyList */ = {
 			isa = PBXGroup;
 			children = (
+				A4A67C552524230000910179 /* View */,
+				A4A67C50252422D300910179 /* ViewModel */,
+				A4A67C4F252422CD00910179 /* Model */,
 				94AA6E54240FB60200BE0151 /* AppDelegate.swift */,
 				94AA6E56240FB60200BE0151 /* SceneDelegate.swift */,
-				94AA6E68240FB69400BE0151 /* BountyViewController.swift */,
-				94AA6E6A240FD04700BE0151 /* DetailViewController.swift */,
 				94AA6E5A240FB60200BE0151 /* Main.storyboard */,
 				94AA6E5D240FB60300BE0151 /* Assets.xcassets */,
 				94AA6E5F240FB60300BE0151 /* LaunchScreen.storyboard */,
 				94AA6E62240FB60300BE0151 /* Info.plist */,
+				A4A67C482524227000910179 /* ListCll.swift */,
 			);
 			path = BountyList;
+			sourceTree = "<group>";
+		};
+		A4A67C4F252422CD00910179 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4A67C4C252422AC00910179 /* BountyInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4A67C50252422D300910179 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4A67C51252422E600910179 /* BountyViewModel.swift */,
+				A4A67C562524232300910179 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4A67C552524230000910179 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94AA6E68240FB69400BE0151 /* BountyViewController.swift */,
+				94AA6E6A240FD04700BE0151 /* DetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,7 +133,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = com.joonwon;
 				TargetAttributes = {
 					94AA6E50240FB60200BE0151 = {
@@ -144,7 +180,11 @@
 				94AA6E55240FB60200BE0151 /* AppDelegate.swift in Sources */,
 				94AA6E69240FB69400BE0151 /* BountyViewController.swift in Sources */,
 				94AA6E57240FB60200BE0151 /* SceneDelegate.swift in Sources */,
+				A4A67C52252422E600910179 /* BountyViewModel.swift in Sources */,
+				A4A67C492524227000910179 /* ListCll.swift in Sources */,
+				A4A67C4D252422AC00910179 /* BountyInfo.swift in Sources */,
 				94AA6E6B240FD04700BE0151 /* DetailViewController.swift in Sources */,
+				A4A67C572524232300910179 /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +236,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +297,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
