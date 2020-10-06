@@ -27,9 +27,9 @@ func solution(_ answers:[Int]) -> [Int] {
     
     return
         scores
-        .sorted{ $0.key < $1.key }
-        .filter{ $0.value == scores.values.max() }
-        .map{ $0.key }
+        .sorted{ $0.key < $1.key }  // key 오름차순 정렬
+        .filter{ $0.value == scores.values.max() }  // values max 값 대조
+        .map{ $0.key }  // key 값 array 반환
 }
 
 solution([1, 2, 3, 4, 5])
