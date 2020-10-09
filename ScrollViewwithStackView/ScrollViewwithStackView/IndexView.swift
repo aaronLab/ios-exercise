@@ -1,5 +1,5 @@
 //
-//  View.swift
+//  IndexView.swift
 //  ScrollViewwithStackView
 //
 //  Created by Aaron Lee on 10/9/20.
@@ -7,78 +7,138 @@
 
 import UIKit
 
-class IndexView: UIView, UITextFieldDelegate {
-    // Size
-    let screensize = UIScreen.main.bounds
-    let defaultSpacing: CGFloat = 16.0
+class IndexView: UIView {
     
-    var scrollView: UIScrollView!
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .systemBackground
+        return scrollView
+    }()
     
-    // Promote
-    var promoteContainer: UIView!
-    var promoteImageView: UIImageView!
-    var promoteTitle: UILabel!
-    var promoteSubTitle: UILabel!
+    let contentView: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    let promoteContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let lblPromoteTitle: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let lblPromoteSubTitle: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .lightGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let textFieldPhoneNumber: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Phone Number"
+        tf.font = .systemFont(ofSize: 15)
+        tf.borderStyle = .roundedRect
+        tf.autocorrectionType = .no
+        tf.keyboardType = .numberPad
+        tf.clearButtonMode = .whileEditing
+        tf.contentVerticalAlignment = .center
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let btnSignIn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Continue with Phone Number", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
+    let btnSocial1: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Continue with Social 1", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
+    let btnSocial2: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Continue with Social 2", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
+    let btnSocial3: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Continue with Social 3", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
     
     convenience init() {
         self.init(frame: .zero)
-        self.setupScrollView()
-        self.setupPromoteView()
+        
+        self.updateUI()
     }
     
-    func setupScrollView() {
-        self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.screensize.width, height: self.screensize.height))
-        self.scrollView.contentSize = CGSize(width: self.screensize.width, height: self.screensize.height + 100.0)
-        self.scrollView.backgroundColor = .white
-        
-        self.addSubview(self.scrollView)
-    }
+    let stackView : UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 10.0
+        return stackView
+    }()
     
-    func setupPromoteView() {
-        // Promote Image View
-        self.promoteImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 48.0, height: 48.0))
-        self.promoteImageView.widthAnchor.constraint(equalToConstant: 48.0).isActive = true
-        self.promoteImageView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
-        self.promoteImageView.image = UIImage(named: "symbol")
+    func updateUI() {
         
-        // Promote Title
-        self.promoteTitle = UILabel()
-        self.promoteTitle.text = "Welcome to AaronLab!"
-        self.promoteTitle.font = .boldSystemFont(ofSize: 20)
         
-        // Promote Subtitle
-        self.promoteSubTitle = UILabel()
-        self.promoteSubTitle.text = "www.aaronlab.net"
-        self.promoteSubTitle.font = .systemFont(ofSize: 12)
-        self.promoteSubTitle.textColor = .lightGray
         
-        // Container
-        self.promoteContainer = UIView(frame: CGRect(x: 0, y: 0, width: self.screensize.width, height: 48.0))
-        self.scrollView.addSubview(self.promoteContainer)
-        self.promoteContainer.addSubview(self.promoteImageView)
-        self.promoteContainer.addSubview(self.promoteTitle)
-        self.promoteContainer.addSubview(self.promoteSubTitle)
+        addSubview(scrollView)
         
-        // Promote Image View Constraints
-        self.promoteImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraint(NSLayoutConstraint(item: self.promoteImageView!, attribute: .leading, relatedBy: .equal, toItem: self.promoteContainer, attribute: .leading, multiplier: 1, constant: 0))
-        self.addConstraint(NSLayoutConstraint(item: self.promoteImageView!, attribute: .top, relatedBy: .equal, toItem: self.promoteContainer, attribute: .top, multiplier: 1, constant: 0))
+        // constrain the scroll view to 8-pts on each side
+        scrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        scrollView.backgroundColor = .gray
         
-        // Promote Title Constraints
-        self.promoteTitle.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraint(NSLayoutConstraint(item: self.promoteTitle!, attribute: .leading, relatedBy: .equal, toItem: self.promoteImageView!, attribute: .trailing, multiplier: 1, constant: 10))
-        self.addConstraint(NSLayoutConstraint(item: self.promoteTitle!, attribute: .top, relatedBy: .equal, toItem: self.promoteContainer, attribute: .top, multiplier: 1, constant: 0))
         
-        // Promote Subtitle Constraints
-        self.promoteSubTitle.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraint(NSLayoutConstraint(item: self.promoteSubTitle!, attribute: .leading, relatedBy: .equal, toItem: self.promoteImageView!, attribute: .trailing, multiplier: 1, constant: 10))
-        self.addConstraint(NSLayoutConstraint(item: self.promoteSubTitle!, attribute: .top, relatedBy: .equal, toItem: self.promoteTitle!, attribute: .bottom, multiplier: 1, constant: 3))
+        // add the stack view to the scroll view
+        scrollView.addSubview(stackView)
         
-        // Container Constraints
-        self.promoteContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraint(NSLayoutConstraint(item: self.promoteContainer!, attribute: .trailing, relatedBy: .equal, toItem: self.scrollView, attribute: .trailing, multiplier: 1, constant: 16))
-        self.addConstraint(NSLayoutConstraint(item: self.promoteContainer!, attribute: .leading, relatedBy: .equal, toItem: self.scrollView, attribute: .leading, multiplier: 1, constant: 16))
-        self.addConstraint(NSLayoutConstraint(item: self.promoteContainer!, attribute: .top, relatedBy: .equal, toItem: self.scrollView, attribute: .top, multiplier: 1, constant: 16))
+        // constrain the stackview view to 8-pts on each side
+        //   this *also* controls the .contentSize of the scrollview
+        stackView.backgroundColor = .red
+        stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16).isActive = true
+        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -16).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16).isActive = true
+        
+        // add ten buttons to the stack view
+        for i in 1...50 {
+            
+            let b = UIButton()
+            b.translatesAutoresizingMaskIntoConstraints = false
+            b.setTitle("Button \(i)", for: .normal)
+            b.backgroundColor = .blue
+            stackView.addArrangedSubview(b)
+        }
+        
     }
-    
 }
