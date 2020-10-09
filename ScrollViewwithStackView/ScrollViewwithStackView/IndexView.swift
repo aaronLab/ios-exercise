@@ -71,13 +71,14 @@ class IndexView: UIView {
         let textField = UITextField()
         textField.placeholder = "Phone Number"
         textField.stylingSignInTF()
+        textField.borderStyling(width: 1.0, radius: 8.0, color: .lightGray)
         return textField
     }()
     
     let btnSignIn: UIButton = {
         let btn = UIButton()
         btn.setTitle("Continue with Phone Number", for: .normal)
-        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .orange)
+        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .gray)
         return btn
     }()
     

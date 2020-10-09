@@ -46,6 +46,13 @@ extension UIView {
         }
     }
     
+    func borderStyling(width: CGFloat, radius: CGFloat?, color: UIColor) {
+        layer.borderWidth = width
+        if let radius = radius {
+            layer.cornerRadius = radius
+        }
+        layer.borderColor = color.cgColor
+    }
 }
 
 extension UIButton {
