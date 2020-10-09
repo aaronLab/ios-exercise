@@ -9,6 +9,8 @@ import UIKit
 
 class IndexView: UIView {
     
+    //MARK: - Elements Init
+    
     let defaultSpace: CGFloat = 16.0
     let verySmallSpace: CGFloat = 2.0
     let symbolSize: CGFloat = 48.0
@@ -20,14 +22,10 @@ class IndexView: UIView {
         return scrollView
     }()
     
-    let signInStackView : UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.spacing = 10.0
-        return stackView
+    let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     let promoteContainer: UIView = {
@@ -45,65 +43,66 @@ class IndexView: UIView {
     
     let lblPromoteTitle: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Welcom to AaronLab!"
         label.font = .boldSystemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let lblPromoteSubTitle: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "www.aaronlab.net"
         label.font = .systemFont(ofSize: 12)
         label.textColor = .lightGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    let signInStackView : UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 16.0
+        return stackView
+    }()
+    
     let textFieldPhoneNumber: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Phone Number"
-        tf.font = .systemFont(ofSize: 15)
-        tf.borderStyle = .roundedRect
-        tf.autocorrectionType = .no
-        tf.keyboardType = .numberPad
-        tf.clearButtonMode = .whileEditing
-        tf.contentVerticalAlignment = .center
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
+        let textField = UITextField()
+        textField.placeholder = "Phone Number"
+        textField.stylingSignInTF()
+        return textField
     }()
     
     let btnSignIn: UIButton = {
         let btn = UIButton()
         btn.setTitle("Continue with Phone Number", for: .normal)
-        btn.setTitleColor(.systemBlue, for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .orange)
         return btn
     }()
     
     let btnSocial1: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Continue with Social 1", for: .normal)
-        btn.setTitleColor(.systemBlue, for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Continue with Google", for: .normal)
+        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .red)
         return btn
     }()
     
     let btnSocial2: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Continue with Social 2", for: .normal)
-        btn.setTitleColor(.systemBlue, for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Continue with Facebook", for: .normal)
+        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .blue)
         return btn
     }()
     
     let btnSocial3: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Continue with Social 3", for: .normal)
-        btn.setTitleColor(.systemBlue, for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Continue with Apple", for: .normal)
+        btn.stylingSignInBtn(normal: .white, highlighted: .darkGray, bgColor: .black)
         return btn
     }()
+    
+    //MARK: - Init
     
     convenience init() {
         self.init(frame: .zero)
@@ -115,60 +114,118 @@ class IndexView: UIView {
     }
     
     func setupScrollView() {
-        addSubview(self.scrollView)
         let guide = safeAreaLayoutGuide
+        
+        self.addSubview(self.scrollView)
+        self.scrollView.addSubview(self.contentView)
+        
+        self.scrollView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         self.scrollView.topAnchor.constraint(equalToSystemSpacingBelow: guide.topAnchor, multiplier: 1.0).isActive = true
-        self.scrollView.rightAnchor.constraint(equalToSystemSpacingAfter: guide.rightAnchor, multiplier: 1.0).isActive = true
-        self.scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: guide.bottomAnchor, multiplier: 1.0).isActive = true
-        self.scrollView.leftAnchor.constraint(equalToSystemSpacingAfter: guide.leftAnchor, multiplier: 1.0).isActive = true
+        self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        self.contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+        self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: self.scrollView.heightAnchor).isActive = true
     }
+    
+    //MARK: - Promote
     
     func setupPromoteView() {
         // Promote Container
-        self.scrollView.addSubview(self.promoteContainer)
-        self.promoteContainer.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        self.promoteContainer.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: self.defaultSpace).isActive = true
-        self.promoteContainer.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -self.defaultSpace).isActive = true
-        self.promoteContainer.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: self.defaultSpace).isActive = true
-        self.promoteContainer.heightAnchor.constraint(equalToConstant: self.symbolSize).isActive = true
+        self.contentView.addSubview(self.promoteContainer)
         
-        // Symbol ImgView
-        self.promoteContainer.addSubview(self.imgViewPromoteSymbol)
-        self.imgViewPromoteSymbol.centerYAnchor.constraint(equalTo: self.promoteContainer.centerYAnchor).isActive = true
-        self.imgViewPromoteSymbol.widthAnchor.constraint(equalToConstant: self.symbolSize).isActive = true
-        self.imgViewPromoteSymbol.heightAnchor.constraint(equalToConstant: self.symbolSize).isActive = true
-        self.imgViewPromoteSymbol.leftAnchor.constraint(equalTo: self.promoteContainer.leftAnchor).isActive = true
+        self.promoteContainer.addAnchors(
+            top: self.contentView.topAnchor,
+            topPadding: self.defaultSpace,
+            right: self.contentView.rightAnchor,
+            rightPadding: self.defaultSpace,
+            bottom: nil,
+            bottomPadding: 0,
+            left: self.contentView.leftAnchor,
+            leftPadding: self.defaultSpace,
+            width: 0,
+            height: self.symbolSize)
         
-        // Promote Title
-        self.promoteContainer.addSubview(self.lblPromoteTitle)
-        self.lblPromoteTitle.topAnchor.constraint(equalTo: self.promoteContainer.topAnchor).isActive = true
-        self.lblPromoteTitle.leftAnchor.constraint(equalTo: self.imgViewPromoteSymbol.rightAnchor, constant: self.defaultSpace).isActive = true
-        
-        // Promote SubTitle
-        self.promoteContainer.addSubview(self.lblPromoteSubTitle)
-        self.lblPromoteSubTitle.topAnchor.constraint(equalTo: self.lblPromoteTitle.bottomAnchor, constant: self.verySmallSpace).isActive = true
-        self.lblPromoteSubTitle.leftAnchor.constraint(equalTo: self.imgViewPromoteSymbol.rightAnchor, constant: self.defaultSpace).isActive = true
+        self.setupPromoteSymbol()
+        self.setupPromoteTitle()
+        self.setupPromoteSubTitle()
     }
     
-    func setupSignInStackView() {
-        self.scrollView.addSubview(self.signInStackView)
-        self.signInStackView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+    func setupPromoteSymbol() {
+        self.promoteContainer.addSubview(self.imgViewPromoteSymbol)
         
-        self.signInStackView.topAnchor.constraint(equalTo: self.promoteContainer.bottomAnchor, constant: self.defaultSpace).isActive = true
-        self.signInStackView.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -self.defaultSpace).isActive = true
-        self.signInStackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -self.defaultSpace).isActive = true
-        self.signInStackView.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: self.defaultSpace).isActive = true
-        
-//        // TEST
-//        for _ in 1...20 {
-//            let b = UIButton()
-//            b.translatesAutoresizingMaskIntoConstraints = false
-//            b.setTitle("Button", for: .normal)
-//            b.setTitleColor(.blue, for: .normal)
-//            b.setTitleColor(.red, for: .highlighted)
-//            self.signInStackView.addArrangedSubview(b)
-//        }
-        
-        
+        self.imgViewPromoteSymbol.addAnchors(
+            top: self.promoteContainer.topAnchor,
+            topPadding: 0,
+            right: nil,
+            rightPadding: 0,
+            bottom: nil,
+            bottomPadding: 0,
+            left: self.promoteContainer.leftAnchor,
+            leftPadding: 0,
+            width: self.symbolSize,
+            height: self.symbolSize)
     }
+    
+    func setupPromoteTitle() {
+        self.promoteContainer.addSubview(self.lblPromoteTitle)
+        
+        self.lblPromoteTitle.addAnchors(
+            top: self.promoteContainer.topAnchor,
+            topPadding: 0,
+            right: nil,
+            rightPadding: 0,
+            bottom: nil,
+            bottomPadding: 0,
+            left: self.imgViewPromoteSymbol.rightAnchor,
+            leftPadding: self.defaultSpace,
+            width: 0,
+            height: 0)
+    }
+    
+    func setupPromoteSubTitle() {
+        self.promoteContainer.addSubview(self.lblPromoteSubTitle)
+        
+        self.lblPromoteSubTitle.addAnchors(
+            top: self.lblPromoteTitle.bottomAnchor,
+            topPadding: self.verySmallSpace,
+            right: nil,
+            rightPadding: 0,
+            bottom: nil,
+            bottomPadding: 0,
+            left: self.imgViewPromoteSymbol.rightAnchor,
+            leftPadding: self.defaultSpace,
+            width: 0,
+            height: 0)
+    }
+    
+    //MARK: - Sign In
+    
+    func setupSignInStackView() {
+        self.contentView.addSubview(self.signInStackView)
+        
+        self.signInStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        self.signInStackView.topAnchor.constraint(greaterThanOrEqualTo: self.promoteContainer.bottomAnchor, constant: self.defaultSpace).isActive = true
+        self.signInStackView.addAnchors(
+            top: nil,
+            topPadding: 0,
+            right: self.contentView.rightAnchor,
+            rightPadding: self.defaultSpace,
+            bottom: self.contentView.bottomAnchor,
+            bottomPadding: self.defaultSpace,
+            left: self.contentView.leftAnchor,
+            leftPadding: self.defaultSpace,
+            width: 0,
+            height: 0)
+        
+        self.signInStackView.addArrangedSubview(self.textFieldPhoneNumber)
+        self.signInStackView.addArrangedSubview(self.btnSignIn)
+        self.signInStackView.addArrangedSubview(self.btnSocial1)
+        self.signInStackView.addArrangedSubview(self.btnSocial2)
+        self.signInStackView.addArrangedSubview(self.btnSocial3)
+    }
+    
 }
