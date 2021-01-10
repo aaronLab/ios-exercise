@@ -14,6 +14,9 @@
 		A4CFFB8C25AAC2CA0057528D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4CFFB8B25AAC2CA0057528D /* Assets.xcassets */; };
 		A4CFFB9725AAC2CA0057528D /* TetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFB9625AAC2CA0057528D /* TetrisTests.swift */; };
 		A4CFFBA225AAC2CA0057528D /* TetrisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBA125AAC2CA0057528D /* TetrisUITests.swift */; };
+		A4CFFBBE25AAC4A30057528D /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBBD25AAC4A30057528D /* Background.swift */; };
+		A4CFFBC725AAC53C0057528D /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBC625AAC53C0057528D /* Variables.swift */; };
+		A4CFFBCF25AAC5A30057528D /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBCE25AAC5A30057528D /* Brick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		A4CFFB9D25AAC2CA0057528D /* TetrisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TetrisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CFFBA125AAC2CA0057528D /* TetrisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisUITests.swift; sourceTree = "<group>"; };
 		A4CFFBA325AAC2CA0057528D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4CFFBBD25AAC4A30057528D /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		A4CFFBC625AAC53C0057528D /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		A4CFFBCE25AAC5A30057528D /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 		A4CFFB7D25AAC2C90057528D /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
+				A4CFFBC525AAC5310057528D /* Variables */,
+				A4CFFBBC25AAC49A0057528D /* Background */,
 				A4CFFBB825AAC2EB0057528D /* Application */,
 			);
 			path = Tetris;
@@ -131,6 +139,23 @@
 				A4CFFB8D25AAC2CA0057528D /* Info.plist */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		A4CFFBBC25AAC49A0057528D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				A4CFFBBD25AAC4A30057528D /* Background.swift */,
+				A4CFFBCE25AAC5A30057528D /* Brick.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		A4CFFBC525AAC5310057528D /* Variables */ = {
+			isa = PBXGroup;
+			children = (
+				A4CFFBC625AAC53C0057528D /* Variables.swift */,
+			);
+			path = Variables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +290,9 @@
 				A4CFFB8525AAC2C90057528D /* GameScene.swift in Sources */,
 				A4CFFB8725AAC2C90057528D /* GameViewController.swift in Sources */,
 				A4CFFB7F25AAC2C90057528D /* AppDelegate.swift in Sources */,
+				A4CFFBBE25AAC4A30057528D /* Background.swift in Sources */,
+				A4CFFBC725AAC53C0057528D /* Variables.swift in Sources */,
+				A4CFFBCF25AAC5A30057528D /* Brick.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
