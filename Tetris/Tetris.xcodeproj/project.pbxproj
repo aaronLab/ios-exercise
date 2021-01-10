@@ -17,6 +17,7 @@
 		A4CFFBBE25AAC4A30057528D /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBBD25AAC4A30057528D /* Background.swift */; };
 		A4CFFBC725AAC53C0057528D /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBC625AAC53C0057528D /* Variables.swift */; };
 		A4CFFBCF25AAC5A30057528D /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBCE25AAC5A30057528D /* Brick.swift */; };
+		A4CFFBD425AAC8AD0057528D /* BrickGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CFFBD325AAC8AD0057528D /* BrickGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A4CFFBBD25AAC4A30057528D /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		A4CFFBC625AAC53C0057528D /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		A4CFFBCE25AAC5A30057528D /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		A4CFFBD325AAC8AD0057528D /* BrickGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				A4CFFBBD25AAC4A30057528D /* Background.swift */,
 				A4CFFBCE25AAC5A30057528D /* Brick.swift */,
+				A4CFFBD325AAC8AD0057528D /* BrickGenerator.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				A4CFFB8525AAC2C90057528D /* GameScene.swift in Sources */,
 				A4CFFB8725AAC2C90057528D /* GameViewController.swift in Sources */,
 				A4CFFB7F25AAC2C90057528D /* AppDelegate.swift in Sources */,
+				A4CFFBD425AAC8AD0057528D /* BrickGenerator.swift in Sources */,
 				A4CFFBBE25AAC4A30057528D /* Background.swift in Sources */,
 				A4CFFBC725AAC53C0057528D /* Variables.swift in Sources */,
 				A4CFFBCF25AAC5A30057528D /* Brick.swift in Sources */,
